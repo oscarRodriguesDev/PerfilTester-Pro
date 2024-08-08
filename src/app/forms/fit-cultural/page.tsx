@@ -113,7 +113,7 @@ const FitCultural = () => {
               type="button"
               onClick={handlePrevious}
               disabled={indiceCategoria === 0}
-              className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-gray-600"
+              className="bg-gray-500 text-white py-2 px-4 rounded-md hover:bg-gray-600"
             >
               Anterior
             </button>
@@ -129,8 +129,14 @@ const FitCultural = () => {
             ) : (
               <button
                 type="submit"
-                className="bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600"
-              >
+                disabled={!todasPerguntasRespondidas()}
+                className={`py-2 px-4 rounded-md ${todasPerguntasRespondidas() ? 'bg-green-500 text-white hover:bg-green-600' : 'bg-gray-400 text-gray-700 cursor-not-allowed'}`}
+                onClick={()=>{
+                 setRespostas(respostas);
+                 console.log(respostas)
+                 alert('Fit cultural realizado com sucesso!')
+                }}
+             >
                 Enviar
               </button>
             )}
